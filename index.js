@@ -1,10 +1,11 @@
 const express = require('express')
-const app = express()
 
+const app = express()
 app.use(express.json())
 
 const morgan = require('morgan')
-app.use(morgan('tiny'))
+app.use(morgan(':method :url :status :res[content-length] - :response-time ms :post'))
+morgan.token('post', request => JSON.stringify(request.body))
 
 let persons = [
       {
@@ -78,8 +79,8 @@ app.post('/api/persons', (request, response) => {
   }
 
   persons = persons.concat(person)
-
   response.json(person)
+  
 })
 
 const unknownEndpoint = (request, response) => {
