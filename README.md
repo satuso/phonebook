@@ -1,2 +1,2 @@
 # phonebook
-* (https://fullstack-phonebook-41827.herokuapp.com/)
+https://fullstack-phonebook-41827.herokuapp.com/
