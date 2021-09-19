@@ -1,2 +1,2 @@
 # phonebook
-* fullstack course part3 exercises
+* (https://fullstack-phonebook-41827.herokuapp.com/)
