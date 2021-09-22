@@ -12,6 +12,11 @@ const morgan = require('morgan')
 app.use(morgan(':method :url :status :res[content-length] - :response-time ms :post'))
 morgan.token('post', request => JSON.stringify(request.body))
 
+const date = new Date()
+app.get('/info', (request, response) => {
+  Person.find({}).then(persons => response.send(`<p>Phonebook has info for ${persons.length} people</p> <p>${date}</p>`))
+})
+
 app.get('/api/persons', (request, response) => {
   Person.find({}).then(notes => {
     response.json(notes)
@@ -55,12 +60,10 @@ app.delete('/api/persons/:id', (request, response, next) => {
 
 app.put('/api/persons/:id', (request, response, next) => {
   const body = request.body
-
   const person = {
     name: body.name,
     number: body.number,
   }
-
   Person.findByIdAndUpdate(request.params.id, person, { new: true })
     .then(updatedPerson => {
       response.json(updatedPerson)
