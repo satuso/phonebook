@@ -15,9 +15,15 @@ mongoose.connect(url)
 const phonebookSchema = new mongoose.Schema({
   name: {
     type: String,
-    unique: true
+    unique: true,
+    minlength: 3,
+    maxlength: 30
   },
-  number: String
+  number: {
+    type: String,
+    minlength: 8,
+    maxlength: 30
+  }
 })
 phonebookSchema.plugin(uniqueValidator)
 
