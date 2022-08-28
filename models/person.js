@@ -1,5 +1,4 @@
 const mongoose = require('mongoose')
-const uniqueValidator = require('mongoose-unique-validator')
 
 const url = process.env.MONGODB_URI
 
@@ -15,7 +14,6 @@ mongoose.connect(url)
 const phonebookSchema = new mongoose.Schema({
   name: {
     type: String,
-    unique: true,
     minlength: 3,
     maxlength: 30
   },
@@ -25,7 +23,6 @@ const phonebookSchema = new mongoose.Schema({
     maxlength: 30
   }
 })
-phonebookSchema.plugin(uniqueValidator)
 
 phonebookSchema.set('toJSON', {
   transform: (document, returnedObject) => {

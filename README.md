@@ -1,2 +1,2 @@
 # phonebook
-https://fullstack-phonebook-satuso.herokuapp.com/
+https://satuso-phonebook.fly.dev

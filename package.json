@@ -7,10 +7,10 @@
     "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon index.js",
-    "build:ui": "rm -rf build && cd ../fullstack/osa2/puhelinluettelo/ && npm run build --prod && cp -r build ../phonebook",
-    "deploy": "git push heroku main",
-    "deploy:full": "npm run build:ui && git add . && git commit -m uibuild && git push && npm run deploy",
-    "logs:prod": "heroku logs --tail",
+    "build:ui": "rm -rf build && cd ../fullstack/osa2/puhelinluettelo/ && npm run build --prod && cp -r build ../phonebook-app",
+    "deploy": "fly deploy",
+    "deploy:full": "npm run build:ui && npm run deploy",
+    "logs:prod": "fly logs",
     "lint": "eslint --fix --ext .js,.jsx ."
   },
   "repository": {
@@ -31,7 +31,6 @@
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
     "mongoose": "^6.0.7",
-    "mongoose-unique-validator": "^2.0.3",
     "morgan": "^1.10.0"
   },
   "devDependencies": {
